@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# Unlinks all .dotfiles/files from home folder.
+
+set -eu
+
+echo -e "unlinking dotfiles:\n"
+
+cd "$HOME/.dotfiles/files"
+
+for file in *; do
+  link="$HOME/.$file"
+  [ -L "$link" ] && rm -v $link
+done
+
+echo -e "\ndone."

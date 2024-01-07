@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#
+# Links all .dotfiles/files to home folder.
+
+set -eu
+
+echo -e "linking dotfiles:\n"
+
+cd "$HOME/.dotfiles/files"
+
+for file in *; do
+  if [ -f "$HOME/.$file" ]; then
+    echo "$HOME/.$file exists. Backing it up into dotfiles_backup."
+    mkdir -p "$HOME/dotfiles_backup"
+    mv "$HOME/.$file" "$HOME/dotfiles_backup/$file"
+  fi
+
+  ln -sfv "$HOME/.dotfiles/files/$file" "$HOME/.$file"
+done
+
+echo -e "\ndone."

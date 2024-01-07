@@ -1,0 +1,19 @@
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+[user]
+	name = Radan Skorić
+	email = radan.skoric@gmail.com
+	signingkey = /Users/radan/.ssh/id_ed25519
+[pull]
+	ff = only
+[rebase]
+	autosquash = true
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
