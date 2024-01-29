@@ -35,9 +35,13 @@ plugins=(
   asdf
 )
 
+# Shell completions
+FPATH="$(brew --prefix)/share/zsh/site-functions:${ASDF_DIR}/completions:${FPATH}"
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
 
 ## ENV VARS
 
