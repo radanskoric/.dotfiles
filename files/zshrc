@@ -74,3 +74,32 @@ alias be="bundle exec"
 
 alias surf="windsurf"
 
+## CUSTOM COMMANDS
+
+## Ollama local AI helpers
+
+#### AI helper for explaining terminal commands, like "explain ls -a"
+explain() {
+  local model="${OLLAMA_MODEL:-llama3.2}"
+  local prompt="You are a helpful assistant with deep understanding of macOS command line syntax.\nExplain what the following command does.\nBe very brief."
+  ollama run "$model" "$prompt\n\n$*"
+}
+
+#### AI helper for command line syntax, like "cmd list subprocesses of pid 1234"
+cmd() {
+  local tmp=$(mktemp)
+  local model="${OLLAMA_MODEL:-llama3.2}"
+  local prompt="Give me the exact macOS command line syntax for this description. Provide only the command, no explanations or markdown."
+  ollama run "$model" "$prompt\n\n$*" >"$tmp"
+  cmd=$(cat "$tmp" \
+    | sed 's/^```bash//g' \
+    | sed 's/^```//g' \
+    | sed 's/```$//g' \
+    | sed '/^$/d' \
+    | perl -lape's/^`(.+)`$/$1/g' \
+    | perl -lape's/^\$\s+//g' \
+  )
+  rm -f "$tmp"
+  echo -e "\n\x1b[32m$cmd\x1b[0m\n"
+  echo -n "$cmd" | pbcopy
+}
