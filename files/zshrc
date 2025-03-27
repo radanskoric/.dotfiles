@@ -42,7 +42,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-
 ## ENV VARS
 
 export PATH="$HOME/.cargo/bin:$(brew --prefix)/opt/libpq/bin:$PATH"
@@ -60,8 +59,11 @@ export DISABLE_SPRING=1
 export RDBG_FRONTEND='vscode'
 export RUBY_CONFIGURE_OPTS=--enable-yjit
 
+# For ctop and other docker CLI tools
+export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
+
 # Override MacOS provided icu4c with Homebrew one because it doesn't provide everything
-export PATH="/usr/local/opt/icu4c/bin:/usr/local/opt/icu4c/sbin:$PATH"
+export PATH="/usr/local/bin:/usr/local/opt/icu4c/bin:/usr/local/opt/icu4c/sbin:$HOME/.codeium/windsurf/bin:$PATH"
 
 ## ALIASES
 
@@ -70,4 +72,5 @@ alias ohmyzsh="code $ZSH"
 
 alias be="bundle exec"
 
+alias surf="windsurf"
 
