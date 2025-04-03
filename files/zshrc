@@ -72,7 +72,7 @@ alias ohmyzsh="code $ZSH"
 
 alias be="bundle exec"
 
-alias surf="windsurf"
+alias surf="windsurf-next"
 
 ## CUSTOM COMMANDS
 
