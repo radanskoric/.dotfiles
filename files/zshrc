@@ -65,6 +65,11 @@ export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
 # Override MacOS provided icu4c with Homebrew one because it doesn't provide everything
 export PATH="/usr/local/bin:/usr/local/opt/icu4c/bin:/usr/local/opt/icu4c/sbin:$HOME/.codeium/windsurf/bin:$PATH"
 
+# Android Studio CLI tools
+export PATH="$PATH:/Applications/Android\ Studio.app/Contents/MacOS:$HOME/Library/Android/sdk/platform-tools"
+# Java for running android builds
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+
 ## ALIASES
 
 alias zshconfig="code ~/.zshrc"
