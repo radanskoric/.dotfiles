@@ -6,7 +6,7 @@
 [user]
 	name = Radan Skorić
 	email = radan.skoric@gmail.com
-	signingkey = /Users/radan/.ssh/id_ed25519
+	signingkey = ~/.ssh/id_ed25519
 [pull]
 	ff = only
 [rebase]

@@ -9,6 +9,8 @@ Clone into the home folder and link the files:
 $ .dotfile/link
 ```
 
+Optionally run `brew bundle` from this directory to install the essentials defined in `Brewfile`.
+
 ### Cleanup
 
 Just unlink the files:
