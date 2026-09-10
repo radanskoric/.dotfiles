@@ -8,14 +8,19 @@ echo -e "linking dotfiles:\n"
 
 cd "$HOME/.dotfiles/files"
 
+# Enable dotglob to match hidden files/directories
+shopt -s dotglob
+
 for file in *; do
-  if [ -f "$HOME/.$file" ]; then
-    echo "$HOME/.$file exists. Backing it up into dotfiles_backup."
+  [ "${file:0:1}" = "." ] && ln_name="$file" || ln_name=".$file"
+  link="$HOME/$ln_name"
+  if [ -f "$link" ] || [ -d "$link" ]; then
+    echo "$link exists. Backing it up into dotfiles_backup."
     mkdir -p "$HOME/dotfiles_backup"
-    mv "$HOME/.$file" "$HOME/dotfiles_backup/$file"
+    mv "$link" "$HOME/dotfiles_backup/$file"
   fi
 
-  ln -sfv "$HOME/.dotfiles/files/$file" "$HOME/.$file"
+  ln -sfv "$HOME/.dotfiles/files/$file" "$link"
 done
 
 echo -e "\ndone."

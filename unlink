@@ -8,9 +8,13 @@ echo -e "unlinking dotfiles:\n"
 
 cd "$HOME/.dotfiles/files"
 
+# Enable dotglob to match hidden files/directories (those starting with .)
+shopt -s dotglob
+
 for file in *; do
-  link="$HOME/.$file"
-  [ -L "$link" ] && rm -v $link
+  [ "${file:0:1}" = "." ] && ln_name="$file" || ln_name=".$file"
+  link="$HOME/$ln_name"
+  [ -L "$link" ] && rm -v "$link"
 done
 
 echo -e "\ndone."
