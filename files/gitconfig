@@ -19,3 +19,5 @@
 	defaultBranch = main
 [merge]
 	conflictstyle = diff3
+[core]
+	excludesfile = ~/.gitignore
